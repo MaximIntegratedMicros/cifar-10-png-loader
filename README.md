@@ -6,7 +6,7 @@
 
 ## Preparing the host machine
 (Skip any step where requirement is already met)
-1. Install Python 3.x. Python 2.x is incompatible.
+1. Install Python 3.7 or 3.8. Python 2.x and 3.9 are incompatible.
 2. Install pip: https://pip.pypa.io/en/stable/installing/
 3. Install and create the virutal environment: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-virtualenv
 4. Clone the github repository: `$ git clone <link_to_repo>`
