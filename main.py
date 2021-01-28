@@ -59,7 +59,7 @@ def main():
         image_data = [color_value for pixel in image_data for color_value in pixel]
 
         # Send image to MAX78000 SPI slave
-        sent_bytes = MAX78000FTDI.spiMaster_SingleWrite(bytes(image_data), False)
+        sent_bytes = MAX78000FTDI.spiMaster_SingleWrite(bytes(image_data), True)
 
         # Wait for test result of image
         # read() blocks until timeout
