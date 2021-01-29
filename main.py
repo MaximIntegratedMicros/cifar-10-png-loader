@@ -5,6 +5,7 @@ import ft4222
 import ft4222.SPI as SPI
 import ft4222.SPIMaster as SPIM
 import PIL.Image as Image
+import argparse
 
 # Start - Match these with MAX78000 application
 SERIAL_BAUD = 115200
@@ -12,22 +13,27 @@ IMG_WIDTH   = 32
 IMG_HEIGHT  = 32
 # End
 
-SERIAL_TOUT = 5     # Seconds
+SERIAL_TOUT = 5 # Seconds
 IMG_MODE    = "RGB"
 
-serial_dev = r'/dev/ttyUSB0'
 
 def print_result(filename, result):
     print("{0}\t{1}".format(filename, result), end='')
 
 
 def main():
+    parser = argparse.ArgumentParser(description = "Recursively test PNG images with cifar-10 based example on MAX78000.",
+                                     formatter_class= argparse.RawTextHelpFormatter)
+    parser.add_argument("-p", "--path",
+                        required=True,
+                        help="Relative or absolute path to the directory of test images.")
+    parser.add_argument("-d", "--device",
+                        required=True,
+                        help="Serial device connected to MAX78000.\nUnix: /dev/ttyUSB0\nWindows: COM1")
 
-    if len(sys.argv) < 2:
-        print("ERROR Missing argument: path to test images")
-        sys.exit()
+    args = parser.parse_args()
 
-    abs_path = os.path.realpath(sys.argv[1])
+    abs_path = os.path.realpath(args.path)
     if not os.path.exists(abs_path):
         print("ERROR Diretory does not exists: {0}".format(abs_path))
         sys.exit()
@@ -44,7 +50,7 @@ def main():
                                 SPIM.SlaveSelect.SS0)
 
     # Serial port must be open before end of SPI transaction to avoid missing characters
-    MAX78000Serial = serial.Serial(serial_dev, SERIAL_BAUD, timeout=SERIAL_TOUT)
+    MAX78000Serial = serial.Serial(args.device, SERIAL_BAUD, timeout=SERIAL_TOUT)
 
     for filename in sorted(os.listdir(abs_path)):
         # Ignore all other files
