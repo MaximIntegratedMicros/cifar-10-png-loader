@@ -15,10 +15,19 @@ $ git clone https://github.com/MaximIntegratedMicros/cifar-10-auto-test.git
 #### Configure MAX78000EVKIT for running cifar-10-auto-test:
 
 * Turn MAX78000EVKIT off by placing SW1 in the OFF position
+
 * Remove camera module connected to J4 if installed
-* De-select camera interface and select USB-SPI interface by installing jumper on JP22 pins 1 and 2
+
+* De-select camera interface and select USB-SPI interface by installing a jumper on JP22 pins 1 and 2
+
+  <img src="Resources/JP22.jpg" style="zoom:50%;" />
+
 * Connect host to MAX78000EVKIT CN1 using USB Micro-B cable
+
 * Connect host to MAX78000EVKIT CN2 using USB Micro-B cable
+
+  <img src="Resources/CN1_CN2.jpg" style="zoom:50%;" />
+
 * Turn MAX78000EVKIT on by placing SW1 in the ON position
 
 
@@ -35,11 +44,11 @@ The host application is written in Python and uses the following packages:
 - ft4222 -- USB-to-QSPI communications
 - Pillow --  image data access
 
-The the host application requires Python 3.7.x or 3.8.x.  Python 2.x and 3.9 are not supported.
+The host application requires Python 3.7.x or 3.8.x.  Python 2.x and 3.9 are not supported.
 
-###### It is not necessary to install a compatible Python system-wide, or to rely on the system-provided Python. To manage Python versions, use `pyenv` (https://github.com/pyenv/pyenv).
+It is not necessary to install a compatible Python system-wide, or to rely on the system-provided Python. To manage Python versions, use `pyenv` (https://github.com/pyenv/pyenv).
 
-###### Like the Python interpreter, Python packages do not need to be installed system-wide, or to rely on the system-provided Python packages. To manage external Python packages, use `pip` (https://pip.pypa.io/en/stable/installing/). Note that pip is installed with Python >= 3.4 downloaded from [python.org]()  or when working in a Virtual Environment created by `venv`.
+Like the Python interpreter, Python packages do not need to be installed system-wide, or to rely on the system-provided Python packages. To manage external Python packages, use `pip` (https://pip.pypa.io/en/stable/installing/). Note that pip is installed with Python >= 3.4 downloaded from [python.org]()  or when working in a Virtual Environment created by `venv`.
 
 #### Creating project directory and cloning upstream project
 
